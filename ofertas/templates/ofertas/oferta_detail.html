@@ -1,0 +1,13 @@
+{% extends "ofertas/base.html" %}
+{% block title %}{{ oferta.titulo }}{% endblock %}
+
+{% block content %}
+  <article>
+    <h2>{{ oferta.titulo }}</h2>
+    <p><strong>Empresa:</strong> {{ oferta.empresa }}</p>
+    <p><strong>Ubicación:</strong> {{ oferta.ubicacion }}</p>
+    <p><strong>Descripción:</strong></p>
+    <div>{{ oferta.descripcion|linebreaks }}</div>
+    <a href="{% url 'ofertas:list' %}">← Volver al listado</a>
+  </article>
+{% endblock %}

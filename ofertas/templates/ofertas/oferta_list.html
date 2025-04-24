@@ -1,0 +1,18 @@
+{% extends "ofertas/base.html" %}
+{% block title %}Listado de Ofertas{% endblock %}
+
+{% block content %}
+  <h2>Ofertas disponibles</h2>
+  <ul>
+    {% for oferta in ofertas %}
+      <li>
+        <a href="{% url 'ofertas:detail' oferta.pk %}">
+          {{ oferta.titulo }}
+        </a>
+        &mdash; {{ oferta.empresa }}
+      </li>
+    {% empty %}
+      <li>No hay ofertas disponibles.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

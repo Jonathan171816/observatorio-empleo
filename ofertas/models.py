@@ -12,3 +12,15 @@ class OfertaLaboral(models.Model):
 
     def __str__(self):
         return f"{self.cargo} en {self.empresa}"
+
+
+class Oferta(models.Model):
+    titulo = models.CharField(max_length=255)
+    empresa = models.CharField(max_length=255)
+    ubicacion = models.CharField(max_length=255)
+    salario = models.CharField(max_length=255)
+    enlace = models.URLField()
+    descripcion = models.TextField()
+
+    def __str__(self):
+        return self.titulo

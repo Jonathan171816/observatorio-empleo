@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Observatorio Empleo{% endblock %}</title>
+  <!-- aquí tus enlaces a Bootstrap, tu CSS, etc. -->
+</head>
+<body>
+  <header>
+    <h1>Observatorio de Empleo</h1>
+    <nav>
+      <a href="{% url 'ofertas:list' %}">Ofertas</a>
+    </nav>
+    <form method="get" action="{% url 'ofertas:scrape' %}" style="margin-top:1em;">
+        <input
+          type="text"
+          name="q"
+          placeholder="Buscar en Computrabajo..."
+          value="{{ request.GET.q|default:'' }}"
+          required
+        />
+        <button type="submit">Buscar</button>
+      </form>
+  </header>
+  {% if messages %}
+    <ul class="messages">
+      {% for m in messages %}
+        <li class="{{ m.tags }}">{{ m }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <main>{% block content %}{% endblock %}</main>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <p>&copy; 2025 OptiRedes</p>
+  </footer>
+</body>
+</html>
